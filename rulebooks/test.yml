@@ -1,0 +1,20 @@
+---
+- name: Monitor CPU Usage and Restart Service
+  hosts: #all 
+    - 10.1.41.44  # test server ip
+    - vgmtnoweb001_Restore  # test server hostname 
+  sources:
+#    - ansible.eda.webhook:
+ #       host: 0.0.0.0
+  #      port: 5000
+    - ansible.eda.range:
+        limit: 60  # Check every 60 seconds
+    
+  rules:
+    - name: Restart service if CPU is high
+      condition: event.i > 0  # Always true to trigger the playbook
+       action:
+        run_command:
+          command: "touch /tmp/ansible_test_output.txt"
+        #hosts:
+        #100.2.42.43:
