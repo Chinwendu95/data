@@ -8,7 +8,7 @@
  #       host: 0.0.0.0
   #      port: 5000
     - ansible.eda.range:
-        limit: 60  # Check every 60 seconds
+        limit: 6  # Check every 60 seconds
     
   rules:
     - name: Restart service if CPU is high
